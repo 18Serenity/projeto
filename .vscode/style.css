@@ -1,0 +1,183 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*ele pega a medida da borda e se vc colocar outra medida pra padding(preenchimento interno), ele se vira pra encaixar esse valor,conforme a medida da borda*/
+}
+:root{
+  --text-color:white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color:rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0,0,0,0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light{
+  --text-color:black;
+  --bg-url:url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0,0,0,0.5);
+  --surface-color: rgba(0,0,0,0.05);
+  --surface-color-hover: rgba(0,0,0,0.02);
+  --highlight-color: rgba(0,0,0,0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /* 
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position:top center;
+  background-size: cover;/*
+  /* 
+  background:color image repeat position/size
+  */
+  background: url(./assets/bg-mobile.jpg) no-repeat top center/cover; /* (transformei todo o parágrafo de cima em uma única propriedade-shorthand ou atalho)*/
+}
+  
+body *{
+font-family: 'Inter', sans-serif;
+color: #ffffff;/*ou color: white*/
+}
+/* as caixas do html e css na pratica: */
+#container{
+  width: 360px;
+  height: 712px;
+  border: 1px solid red;
+  margin: 56px auto 0px  ; /*quando vc vai adicionando itens na margin(ate 4 iten), o primeiro(56px)se refere a parte de cima, o (auto) nas laterais e o (0px) na parte de baixo; se for 4 atributos ele sempre vai modificar sentido horario*/
+  /*margin: auto; 
+   aqui é para centralizar a imagem; o auto centraliza de todos os lados, porem quando tem a largura definida, pois no css ele não permite que ajuste automático a parte de cima e de baixo da caixa*/
+   padding: 0 24px;/*aqui é para ajustar as laterais dos botoes; o 0 é em cima e em baixo e, o 24px são nas laterais*/
+}
+/*
+#profile img{
+  width:112px;
+  margin: auto;
+  {
+  aqui a altura não é fixa, então não precisa ser colocado; a caixa ficará do mesmo tamanho que a imagem, porem conforme vc coloca informações do perfil, ele empurra a caixa(ela se ajusta conforme a quantidade de conteúdo que colocar*/
+
+/* em elementos display:inline eu não consigo colocar margin:auto, somente em display: block.
+-display:inline aceita que o pai dele tenha um text-aling:center, quer dizer todos os inline aceita que o pai defina se os elementos serão centralizados ou jogados pra direita ou esquerda;
+-div é display:block e img é display: inline.
+ex: 
+  #profile{
+    text-aling:center;
+}
+
+  #profile{
+    display:inline;
+    width:112px;
+  }
+*/
+  #profile{
+    text-align:center;
+    padding: 24px;
+}
+
+  #profile img{
+    width:112px;
+  }
+ #profile{
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 8px;
+ }
+
+/*switch*/
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;  
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  
+  position: absolute;
+  top: 50%;
+ left: 0;
+  z-index: 1;
+  transform: translateY(-50%);/*aqui o alinhamento é na vertical; se fosse horizontal seria translate x e seria left 0*/
+}
+.light #switch button{
+  right: 0;
+  left: initial;
+}
+#switch span { /*o span é display inline entao ele nao vai aceitar largura fixa e por isso que coloca block*/
+  display: block; 
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  --webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+ /*links:*/
+ ul{
+  list-style: none; /*aqui serve para tirar os pontinhos de lista*/
+  display: flex;
+  flex-direction: column;
+  gap: 16px;/*ele dá espaçamento entre o conteúdo*/
+  padding: 24px 0;/*preeenchimento ao redor dos botões*/
+ }
+ ul li a{ /*cada filho aceita o display, o flex e o gap do pai ul*/
+  border: 1px solid red;
+  display: flex; /*vai fazer com que o A ocupe todo espaço disponível */
+  justify-content: center;/*esse atributo pega o conteúdo e alinha ao meio (bem no centro da caixa)*/
+  /*aqui tbm pode ser:
+      display:block;
+      text-aling:center;
+     ao invés de usar o display:flex e justify-content:center, pois no block é texto*/
+  align-items: center; /*ele cria uma linha imaginária que coloca o conteúdo no meio dessa linha, logo se tiver apenas 1 linha escrita não conseguirá ver diferença visível*/
+  padding: 16px 24px;
+  /*esses dados abaixo são do devlink*/
+  background: rgba(255, 255, 255, 0.1);/*aqui esses 3 valores de 255 juntos, significam que é cor branca e o valor de 0.1 é a transparência(alfa); rgba significa red green,blue e alfa que são tons mais escuros daquelas cores*/
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;/*arredondamento de borda*/
+  backdrop-filter: blur(4px);/*aqui o blur é para embaçar, mas é bem sutil*/
+  -webkit-backdrop-filter: blur(4px);/*aqui foi retirado do site can i use.com que fala qual o melhor filtro para cada browser e nesse ele pede para colocar o prefixo webkit*/
+
+  /*aqui ajustando fontes dos links:*/
+  text-decoration: none;/*para retirar a linha de baixo das escritas*/
+  font-weight: 500;
+
+  transition: background 0.2s;/*aqui sempre quando atualizar a página ele transiciona o background em 2s(ele transiciona indo para uma cor de background e depois voltando pra outra cor de background)*/
+ }
+/*é um pseudo-selector que da para aplicar coisas quando a gente passa o mouse em cima */
+ ul li a:hover{
+background: rgba(255, 255, 255, 0.05);
+border: 1.5px solid white;
+ }
+/*social-links*/
+#social-links{
+  display: flex;
+  /*gap: 32px;/*aqui calcula o font-size de 40 - 0 padding de 24= falta mais 16 de gap(16=16=32)*/
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;/*o valor de 40px que tinha colocado antes é referente ao devlink e o valor 24px tbm */
+}
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+/*aqui nao vai precisar mais do gap no primeiro social-links pois ja colocou o padding de 16px e vai manter a mesma coisa*/
+#social-links a:hover{ /*aqui é para colocar a bolinha nos links socias*/
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+#footer{
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
