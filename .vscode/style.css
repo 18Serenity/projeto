@@ -42,6 +42,7 @@ color: #ffffff;/*ou color: white*/
 /* as caixas do html e css na pratica: */
 #container{
   width: 360px;
+  max-width: 588px;
   height: 712px;
   border: 1px solid red;
   margin: 56px auto 0px  ; /*quando vc vai adicionando itens na margin(ate 4 iten), o primeiro(56px)se refere a parte de cima, o (auto) nas laterais e o (0px) na parte de baixo; se for 4 atributos ele sempre vai modificar sentido horario*/
